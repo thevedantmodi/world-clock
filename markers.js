@@ -1,8 +1,11 @@
 import { location_names } from "./locations.js";
-// import { airports } from "./airports.js";
 
 const URL = 'IATAairports.json';
 let airports = new Map()
+
+let location_lat = new Map();
+let location_lon = new Map();
+let location_tz = new Map();
 
 fetch(URL)
     .then(response => response.json())
@@ -19,16 +22,25 @@ fetch(URL)
 
 
 function makeMarkers (airports) {
-    console.log(airports.get("LAX"))
+    findCityInfo(airports)
 }
 
-// // location_names.forEach(name => {
-//     console.log(airports.get('BOS'))
-// // })
+function findCityInfo (airports) {
+    console.log(location_names)
+    location_names.forEach(name => {
+        let lon = 0; let lat = 0; let tz = "UTC";
+        if (name != "UTC" && name != "GMT") {
+            //If UTC, the default should do
+            const port = airports.get(name)
+            lon = port.lon; lat = port.lat; tz = port.tz;            
+        }
+        console.log(name, lon, lat, tz)
+        setInfo(name, lon, lat, tz)
+    })
+}
 
-// airports.forEach(port => {
-//     console.log(port)
-// })
-
-// console.log(location_names)
-
+function setInfo(name, lon, lat, tz) {
+    location_lat.set(name, lon); 
+    location_lon.set(name, lat); 
+    location_tz.set(name, tz);
+}
