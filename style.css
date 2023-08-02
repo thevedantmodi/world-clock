@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
 
+
 body {
     font-family: IBM Plex Mono, monospace;
     font-size: 64px;
@@ -9,6 +10,9 @@ body {
     background-color: #111118;
     color: #ffffff;
 }
+
+#map { height: 500px; }
+h1 { font-size: 12px; }
 
 section.times div {
     padding: 24px 36px 24px 36px;
