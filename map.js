@@ -1,5 +1,3 @@
-import { location_names  } from "./locations";
-
 var map = L.map('map', {
     minZoom: 1.5,
     maxZoom: 10,
