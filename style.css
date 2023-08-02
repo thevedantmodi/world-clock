@@ -11,7 +11,10 @@ body {
     color: #ffffff;
 }
 
-#map { height: 500px; }
+#map { 
+    height: 200px;
+    padding-bottom: 25%;
+}
 h1 { font-size: 12px; }
 
 section.times div {
