@@ -2,10 +2,25 @@
 <html>
 <head>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""></script>
 </head>
 <body>
 
-<section class=" times">
+<section class="map">
+    <div id="map">
+
+    </div>
+<!-- hello??? -->
+<!-- I think VSCode SFTP worked! -->
+
+</section>
+
+<section class="times">
     
     <div tz="America/New_York">
         <h2>BOS</h2>
@@ -32,6 +47,16 @@
         <output>00:00:00</output>
     </div>
 
+    <div tz="Australia/Brisbane">
+        <h2>BNE</h2>
+        <output>00:00:00</output>
+    </div>
+
+    <div tz="America/Los_Angeles">
+        <h2>SFO</h2>
+        <output>00:00:00</output>
+    </div>
+
     <div tz="Atlantic/Azores">
         <h2>PDL</h2>
         <output>00:00:00</output> 
@@ -46,18 +71,13 @@
         <h2>KSC</h2>
         <output>00:00:00</output>
     </div>
-
-    <div tz="Australia/Brisbane">
-        <h2>BNE</h2>
-        <output>00:00:00</output>
-    </div>
-
     
 </section>
 
 <script src="https://moment.github.io/luxon/global/luxon.min.js"></script>
 <!-- Luxon is a time zone handler -->
 <script src="times.js"></script>
+<script src="map.js"></script>
 
 </body>
 </html>
