@@ -1,4 +1,9 @@
-import { location_names } from "./search.js";
+import * as airports from "./airports.js";
+
+let location_names = new Set()
+
+const inputBox = document.getElementById("input-box")
+const confirmButton = document.getElementById("add-button")
 
 /* Old method with preset of cities
 const section = document.querySelector('.times');
@@ -11,24 +16,18 @@ for (const div of divs) {
 */
 // New method with custom cities added!
 
-const URL = 'IATAairports.json';
-let airports = new Map();
+confirmButton.addEventListener("click", () => {
+    const name = inputBox.value
+    location_names.add(name)
+    console.log(location_names)
+    renderCity(name)
+})
+
 let tz; let code;
 
-fetch(URL)
-    .then(response => response.json())
-    .then(data => {
-        data.forEach(item => {            
-            airports.set(item.iata, item);
-        });
-        renderCity(airports)
-    })
-    .catch(error => {
-        console.error('Error fetching JSON data:', error);
-    });
-
-function renderCity (airports) {
-    
+function renderCity (name) {
+    const port = airports.port(name)
+    console.log("port is ", port);
 }
 
 
@@ -39,20 +38,4 @@ const time_read = `
         <output>00:00:00</output>
     </div>
 `
-
-
-let locs = [
-    "BOS",
-    "UTC",
-    "HOU",
-    "KIN",
-    "HYD",
-    "BNE",
-    "SFO",
-    "PDL",
-    "LON",
-    "KSC",
-    "FCO"
-]
-
-export { locs as location_names }
+export { location_names }

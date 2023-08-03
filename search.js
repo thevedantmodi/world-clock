@@ -39,12 +39,9 @@ let cities = ["SEA", "PDX", "SMF", "SFO", "OAK",
 "PBI"]
 // TODO: Update a new file with only IATA codes with the cities
 
-let location_names = new Set()
-// export { location_names }
 
 const resultsBox = document.querySelector(".result-box")
 const inputBox = document.getElementById("input-box")
-const confirmButton = document.getElementById("add-button")
 
 inputBox.onkeyup = function(){
     let result = []
@@ -74,10 +71,3 @@ function select(list) {
     inputBox.value = list.innerHTML
     resultsBox.innerHTML = '';
 }
-
-confirmButton.addEventListener("click", () => {
-    console.log("here")
-    location_names.add(inputBox.value)
-    console.log(location_names)
-})
-
