@@ -6,6 +6,7 @@ const map = L.map('map', {
 });
 
 const OSM_attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+const Vedant_attribution = '&copy; <a href="http://www.vedantmodi.com">Vedant Modi</a>'
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
     attribution: OSM_attribution,
@@ -111,7 +112,7 @@ function displayTimes() {
     const times = document.querySelectorAll("output")
     for (let i = 0; i < times.length; i++) {
         const name = location_names[i]
-        
+
         const time_str = times[i].innerHTML
         const time = time_str.substring(0, time_str.length - 3)
 
