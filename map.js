@@ -43,7 +43,6 @@ function makeMarkers (airports) {
     plotMarkers()
     plotTooltips()
 
-    
     setInterval(function() {
         plotTooltips()
     }, 1000)
@@ -88,16 +87,21 @@ function plotMarkers () {
 }
 
 function plotTooltips () {
-    location_names.forEach(name => {
+    const times = document.querySelectorAll("output")
+    for (let i = 0; i < times.length; i++) {
+        const name = location_names[i]
         const lat = location_lat.get(name)
         const lon = location_lon.get(name)
+        const time_str = times[i].innerHTML
+        const time = time_str.substring(0, time_str.length - 3)
+
         const tooltip = L.tooltip({
             permanent: true
         })
             .setLatLng([lon, lat])
-            .setContent(`${name}<br/>`)
+            .setContent(`${name}<br/>${time}`)
             .addTo(map);
-    })
+    }
 }
 
 function displayTimes() {
