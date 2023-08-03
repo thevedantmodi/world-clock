@@ -24,6 +24,7 @@ let location_lon = new Map();
 let location_tz = new Map();
 
 let markers = []
+let tooltips = []
 
 fetch(URL)
     .then(response => response.json())
@@ -44,7 +45,7 @@ function makeMarkers (airports) {
     plotTooltips()
 
     setInterval(function() {
-        plotTooltips()
+        displayTimes()
     }, 1000)
 }
 
@@ -101,21 +102,22 @@ function plotTooltips () {
             .setLatLng([lon, lat])
             .setContent(`${name}<br/>${time}`)
             .addTo(map);
+
+        tooltips.push(tooltip)
     }
 }
 
 function displayTimes() {
-    let count = 0
-    markers.forEach(marker => {
-        const name = location_names[count]
-        marker.bindTooltip({
-            permanent: true,
-            opacity: 1,
-            offset: L.point({x: -1, y: 0}),
-            content: '<p>00:00:00</p>'
+    const times = document.querySelectorAll("output")
+    for (let i = 0; i < times.length; i++) {
+        const name = location_names[i]
+        
+        const time_str = times[i].innerHTML
+        const time = time_str.substring(0, time_str.length - 3)
 
-        }).openTooltip();
-        count++
-    })
+        const tooltip = tooltips[i]
+
+        tooltip.setContent(`${name}<br/>${time}`)
+    }
 }
 
