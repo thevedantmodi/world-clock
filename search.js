@@ -40,11 +40,7 @@ let cities = ["SEA", "PDX", "SMF", "SFO", "OAK",
 
 const resultsBox = document.querySelector(".result-box")
 const inputBox = document.getElementById("input-box")
-const button = document.getElementById("add-button")
-
-button.addEventListener("click", () => {
-    
-})
+const confirmButton = document.getElementById("add-button")
 
 inputBox.onkeyup = function(){
     let result = []
@@ -70,16 +66,11 @@ function display(result) {
     }
 }
 
-document.addEventListener('click',function(e){
-    if(e.target && e.target.id == 'res'){
-        console.log('click!')
-        
-     }
- });
-
-
 function select(list) {
     inputBox.value = list.innerHTML
     resultsBox.innerHTML = '';
 }
 
+confirmButton.addEventListener("click", () => {
+    
+})
