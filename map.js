@@ -6,10 +6,10 @@ const map = L.map('map', {
 });
 
 const OSM_attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-const Vedant_attribution = '&copy; <a href="http://www.vedantmodi.com">Vedant Modi</a>'
+const Vedant_attribution = '&copy; <a href="http://www.vedantmodi.com">Vedant Modi</a> '
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
-    attribution: OSM_attribution,
+    attribution: Vedant_attribution + OSM_attribution,
     noWrap: false
     
 }).addTo(map);
