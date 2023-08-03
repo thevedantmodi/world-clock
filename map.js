@@ -1,18 +1,18 @@
-// import { location_names } from "./locations.js";
+import { location_names } from "./locations.js";
 
-let location_names = [
-    "BOS",
-    "UTC",
-    "HOU",
-    "KIN",
-    "HYD",
-    "BNE",
-    "SFO",
-    "PDL",
-    "LON",
-    "KSC",
-    "FCO"
-]
+// let location_names = [
+//     "BOS",
+//     "UTC",
+//     "HOU",
+//     "KIN",
+//     "HYD",
+//     "BNE",
+//     "SFO",
+//     "PDL",
+//     "LON",
+//     "KSC",
+//     "FCO"
+// ]
 import * as airports from "./airports.js";
 
 
@@ -41,39 +41,44 @@ let tooltips = []
 
 makeMarkers()
 
-function makeMarkers () {
+export function makeMarkers () {
     findCityInfo()
     plotMarkers()
     plotTooltips()
-
-    setInterval(function() {
-        displayTimes()
-    }, 1000)
 }
+
+setInterval(function() {
+    displayTimes()
+}, 1000)
 
 function findCityInfo () {
     // console.log(location_names)
-    location_names.forEach(name => {
+    const time_blocks = document.querySelectorAll(".times div")
+    for (let i = 0; i < time_blocks.length; i++) {
+        const name = time_blocks[i].querySelector("h2").innerHTML
+        console.log(name)
         let lat = 0; let lon = 0; let tz = "UTC";
         if (name != "UTC" && name != "GMT") {
             //If UTC, the default should do
             const port = airports.port(name)
             lat = port.lat; lon = port.lon; tz = port.tz;            
         }
-        // console.log(name, lat, lon, tz)
-        // TODO: Make this a json object instead (one key multiple values)
+        console.log(name, lat, lon, tz)
         setInfo(name, lat, lon, tz)
-    })
+    }
 }
 
 function setInfo(name, lat, lon, tz) {
+    // TODO: Store this value in the HTML object, not in a JS DS!
     location_lon.set(name, lat); 
     location_lat.set(name, lon); 
     location_tz.set(name, tz);
 }
 
 function plotMarkers () {
-    location_names.forEach(name => {
+    const time_blocks = document.querySelectorAll(".times div")
+    for (let i = 0; i < time_blocks.length; i++) {
+        const name = time_blocks[i].querySelector("h2").innerHTML
         const lat = location_lat.get(name)
         const lon = location_lon.get(name)
         const Icon = L.icon({
@@ -81,15 +86,15 @@ function plotMarkers () {
             iconSize:     [7,7], // size of the icon
         });
         const marker = L.marker([lon, lat], {icon: Icon});
-        // marker.bindPopup(name);
-        
+
         marker.addTo(map);
         
         markers.push(marker)
-    })
+
+    }
 }
 
-function plotTooltips () {
+export function plotTooltips () {
     const times = document.querySelectorAll("output")
     for (let i = 0; i < times.length; i++) {
         const name = location_names[i]
