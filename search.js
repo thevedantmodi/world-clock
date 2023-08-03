@@ -45,6 +45,7 @@ const button = document.getElementById("add-button")
 button.addEventListener("click", () => {
     
 })
+
 inputBox.onkeyup = function(){
     let result = []
     let input = inputBox.value;
@@ -69,23 +70,12 @@ function display(result) {
     }
 }
 
-const search_results = document.querySelectorAll(".result-box ul li")
-
-
 document.addEventListener('click',function(e){
     if(e.target && e.target.id == 'res'){
         console.log('click!')
         
      }
  });
-
-search_results.forEach((res) => {
-    res.addEventListener('click', () => {
-        console.log('click!')
-        inputBox.value = res.innerHTML;
-        resultsBox.innerHTML = '';
-    })
-})
 
 
 function select(list) {
