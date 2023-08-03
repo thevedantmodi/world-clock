@@ -23,6 +23,8 @@ let location_lat = new Map();
 let location_lon = new Map();
 let location_tz = new Map();
 
+let markers = []
+
 fetch(URL)
     .then(response => response.json())
     .then(data => {
@@ -38,7 +40,13 @@ fetch(URL)
 
 function makeMarkers (airports) {
     findCityInfo(airports)
-    plotMarker()
+    plotMarkers()
+    plotTooltips()
+
+    
+    setInterval(function() {
+        plotTooltips()
+    }, 1000)
 }
 
 function findCityInfo (airports) {
@@ -62,7 +70,7 @@ function setInfo(name, lat, lon, tz) {
     location_tz.set(name, tz);
 }
 
-function plotMarker() {
+function plotMarkers () {
     location_names.forEach(name => {
         const lat = location_lat.get(name)
         const lon = location_lon.get(name)
@@ -70,7 +78,40 @@ function plotMarker() {
             iconUrl: 'img/black-dot.png',
             iconSize:     [7,7], // size of the icon
         });
+        const marker = L.marker([lon, lat], {icon: Icon});
+        // marker.bindPopup(name);
         
-        L.marker([lon, lat], {icon: Icon}).addTo(map).bindPopup(name);  
+        marker.addTo(map);
+        
+        markers.push(marker)
     })
 }
+
+function plotTooltips () {
+    location_names.forEach(name => {
+        const lat = location_lat.get(name)
+        const lon = location_lon.get(name)
+        const tooltip = L.tooltip({
+            permanent: true
+        })
+            .setLatLng([lon, lat])
+            .setContent(`${name}<br/>`)
+            .addTo(map);
+    })
+}
+
+function displayTimes() {
+    let count = 0
+    markers.forEach(marker => {
+        const name = location_names[count]
+        marker.bindTooltip({
+            permanent: true,
+            opacity: 1,
+            offset: L.point({x: -1, y: 0}),
+            content: '<p>00:00:00</p>'
+
+        }).openTooltip();
+        count++
+    })
+}
+
