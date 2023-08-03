@@ -18,8 +18,27 @@
     <div id="map"></div>
 </section>
 
+<section class="search">
+
+<div class="search-box">
+    <div class="row">
+        <input type="text" id="input-box" placeholder="Add your city"
+        autocomplete="off">
+        <button id="add-button">+</button>
+    </div>
+    <div class="result-box">
+        <!-- Autocomplete results -->
+        <ul>
+            <li>Port 1</li>
+            <li>Port 2</li>
+        </ul>
+    </div>
+</div>
+
+</section>
+
 <section class="times">
-    
+   
     <div tz="America/New_York">
         <h2 id="loc">BOS</h2>
         <output>00:00:00</output> 
@@ -82,8 +101,9 @@
 <script type="module" src="times.js"></script>
 <script type="module" src="locations.js"></script>
 <script type="module" src="map.js"></script>
+<script type="module" src="search.js"></script>
 <!-- <script type="module" src="airports.js"></script> -->
 <!-- <script type="module" src="markers.js"></script> -->
 
-</body>
+</body>x
 </html>
