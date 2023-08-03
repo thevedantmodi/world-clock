@@ -46,7 +46,7 @@ function findCityInfo () {
             const port = airports.port(name)
             lat = port.lat; lon = port.lon; tz = port.tz;            
         }
-        console.log(name, lat, lon, tz)
+        // console.log(name, lat, lon, tz)
         // TODO: Make this a json object instead (one key multiple values)
         setInfo(name, lat, lon, tz)
     })
