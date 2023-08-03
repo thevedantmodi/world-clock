@@ -37,6 +37,10 @@ let cities = ["SEA", "PDX", "SMF", "SFO", "OAK",
 "MIA",
 "FLL",
 "PBI"]
+// TODO: Update a new file with only IATA codes with the cities
+
+let location_names = []
+export { location_names }
 
 const resultsBox = document.querySelector(".result-box")
 const inputBox = document.getElementById("input-box")
@@ -49,7 +53,7 @@ inputBox.onkeyup = function(){
         result = cities.filter((code)=>{
             return code.toLowerCase().includes(input.toLowerCase())
         });
-        console.log(result)
+        // console.log(result)
     }
     display(result);
 }
@@ -72,5 +76,8 @@ function select(list) {
 }
 
 confirmButton.addEventListener("click", () => {
-    
+    console.log("here")
+    location_names.push(inputBox.value)
+    console.log(location_names)
 })
+

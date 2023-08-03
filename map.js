@@ -1,4 +1,6 @@
 import { location_names } from "./locations.js";
+import * as airports from "./airports.js";
+
 
 const map = L.map('map', {
     minZoom: 1.5,
@@ -16,10 +18,6 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.p
 
 map.setView([27,0],0);
 
-
-const URL = 'IATAairports.json';
-let airports = new Map()
-
 let location_lat = new Map();
 let location_lon = new Map();
 let location_tz = new Map();
@@ -27,21 +25,10 @@ let location_tz = new Map();
 let markers = []
 let tooltips = []
 
-fetch(URL)
-    .then(response => response.json())
-    .then(data => {
-        data.forEach(item => {            
-            airports.set(item.iata, item);
-        });
-        makeMarkers(airports)
-    })
-    .catch(error => {
-        console.error('Error fetching JSON data:', error);
-    });
+makeMarkers()
 
-
-function makeMarkers (airports) {
-    findCityInfo(airports)
+function makeMarkers () {
+    findCityInfo()
     plotMarkers()
     plotTooltips()
 
@@ -50,16 +37,16 @@ function makeMarkers (airports) {
     }, 1000)
 }
 
-function findCityInfo (airports) {
+function findCityInfo () {
     // console.log(location_names)
     location_names.forEach(name => {
         let lat = 0; let lon = 0; let tz = "UTC";
         if (name != "UTC" && name != "GMT") {
             //If UTC, the default should do
-            const port = airports.get(name)
+            const port = airports.port(name)
             lat = port.lat; lon = port.lon; tz = port.tz;            
         }
-        // console.log(name, lat, lon, tz)
+        console.log(name, lat, lon, tz)
         // TODO: Make this a json object instead (one key multiple values)
         setInfo(name, lat, lon, tz)
     })
