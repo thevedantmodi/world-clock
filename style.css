@@ -113,3 +113,10 @@ section.times div.awake h2:before{
 .leaflet-control-attribution {
     filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
 } */
+
+.map-point {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+  }
