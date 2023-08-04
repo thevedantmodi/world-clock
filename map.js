@@ -16,7 +16,7 @@ import { location_names } from "./locations.js";
 import * as airports from "./airports.js";
 
 // TODO: Change to non temp key
-const apiKey = "AAPKd7a4355d2c604824982cb7a4bca78356Ou6UW9lzFTDN3khog0gMtcMo_7jz_n0D94ecNdOGfISik3oAwS5Bxj6Bh41jzZU2";
+const apiKey = "AAPKd5f4ec47348045939bbc7b3325751f2bAJtvnrN1ekzxq--Il1sHOL2c-IrCJ-3c2IPRMUhuh5wa4KxweuzwY5hkI2GyqBDR";
 const basemapEnum = "ArcGIS:DarkGray";
 
 // minZoom: 1.5 maxZoom: 10
@@ -52,7 +52,7 @@ let tooltips = []
 
 export function makeMarkers () {
     plotMarkers()
-    plotTooltips()
+    // plotTooltips()
     console.log(`all done!`)
 }
 
@@ -63,11 +63,14 @@ export function makeMarkers () {
 function plotMarkers () {
     const time_blocks = document.querySelectorAll(".times div")
     for (let i = 0; i < time_blocks.length; i++) {
+        const name = time_blocks[i].querySelector("h2").innerHTML
         const lon = time_blocks[i].lon
         const lat = time_blocks[i].lat
+        const time_str = time_blocks[i].querySelector("output").innerHTML
+        const time = time_str.substring(0, time_str.length - 3)
 
         let icon = new maplibregl.Marker({
-            element: plotPoint(),
+            element: plotPoint(name, time_str),
           }).setLngLat([lon, lat]) // Replace with the coordinates of the point you want to add
             .addTo(map);
           
@@ -77,28 +80,38 @@ function plotMarkers () {
     }
 }
 
-function plotPoint() {
-    var element = document.createElement('div');
+function plotPoint(name, time_str) {
+    const group = document.createElement('div')
+    group.className = 'map-group'
+    const element = document.createElement('div');
     element.className = 'map-point';
-    return element;
+    const text = document.createElement('div');
+    text.className = 'map-text'
+    text.innerHTML = `<br/><b>${name} ${time_str}</b>`
+    
+    group
+    .appendChild(element)
+    .appendChild(text)
+
+    return group;
   }
 
-function plotTooltips () {
-    const time_blocks = document.querySelectorAll(".times div")
-    for (let i = 0; i < time_blocks.length; i++) {
-        const name = time_blocks[i].querySelector("h2").innerHTML
-        const lat = time_blocks[i].lat
-        const lon = time_blocks[i].lon
-        const time_str = time_blocks[i].querySelector("output").innerHTML
-        const time = time_str.substring(0, time_str.length - 3)
+// function plotTooltips () {
+//     const time_blocks = document.querySelectorAll(".times div")
+//     for (let i = 0; i < time_blocks.length; i++) {
+//         const name = time_blocks[i].querySelector("h2").innerHTML
+//         const lat = time_blocks[i].lat
+//         const lon = time_blocks[i].lon
+//         const time_str = time_blocks[i].querySelector("output").innerHTML
+//         const time = time_str.substring(0, time_str.length - 3)
 
-        // tooltip at [lon, lat]
-        // permanent tooltip
-        // name \n time
+//         // tooltip at [lon, lat]
+//         // permanent tooltip
+//         // name \n time
 
-        tooltips.push(tooltip)
-    }
-}
+//         tooltips.push(tooltip)
+//     }
+// }
 
 function displayTimes() {
     const time_blocks = document.querySelectorAll(".times div")

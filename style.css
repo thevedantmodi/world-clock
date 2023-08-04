@@ -120,3 +120,7 @@ section.times div.awake h2:before{
     background-color: white;
     border-radius: 50%;
   }
+
+.map-group {
+    line-height: 100%;
+}
