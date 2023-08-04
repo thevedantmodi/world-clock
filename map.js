@@ -15,22 +15,18 @@ import { location_names } from "./locations.js";
 // ]
 import * as airports from "./airports.js";
 
-
-const map = L.map('map', {
-    minZoom: 1.5,
-    maxZoom: 10,
-});
+// minZoom: 1.5 maxZoom: 10
+// Maybe lock movement, you don't really need to move around?
+const map = {};
 
 const OSM_attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 const Vedant_attribution = '&copy; <a href="http://www.vedantmodi.com">Vedant Modi</a> '
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
-    attribution: Vedant_attribution + OSM_attribution,
-    noWrap: false
-    
-}).addTo(map);
+// no wrap
 
-map.setView([27,0],0);
+
+// Point a little up from the center to show more of land-dense N Hemisphere
+// center is lat, lon = 27, 0
 
 let markers = []
 let tooltips = []
@@ -50,17 +46,8 @@ function plotMarkers () {
     for (let i = 0; i < time_blocks.length; i++) {
         const lat = time_blocks[i].lat
         const lon = time_blocks[i].lon
-        const Icon = L.icon({
-            iconUrl: 'img/black-dot.png',
-            iconSize:     [7,7], // size of the icon
-        });
-        
-        const marker = L.marker([lon, lat], {icon: Icon});
-
-        marker.addTo(map);
-        
-        markers.push(marker)
-
+        // black dot 7px x 7px
+        // at [lon, lat]
     }
 }
 
@@ -73,14 +60,9 @@ function plotTooltips () {
         const time_str = time_blocks[i].querySelector("output").innerHTML
         const time = time_str.substring(0, time_str.length - 3)
 
-        const tooltip = L.tooltip({
-            permanent: true
-        })
-            .setLatLng([lon, lat])
-            .setContent(`${name}<br/>${time}`)
-            .addTo(map);
-
-        console.log(`added ${name} to map`)
+        // tooltip at [lon, lat]
+        // permanent tooltip
+        // name \n time
 
         tooltips.push(tooltip)
     }
