@@ -16,7 +16,7 @@ import { location_names } from "./locations.js";
 import * as airports from "./airports.js";
 
 // TODO: Change to non temp key
-const apiKey = "AAPKd5f4ec47348045939bbc7b3325751f2bAJtvnrN1ekzxq--Il1sHOL2c-IrCJ-3c2IPRMUhuh5wa4KxweuzwY5hkI2GyqBDR";
+const apiKey = "AAPKd7a4355d2c604824982cb7a4bca78356Ou6UW9lzFTDN3khog0gMtcMo_7jz_n0D94ecNdOGfISik3oAwS5Bxj6Bh41jzZU2";
 const basemapEnum = "ArcGIS:DarkGray";
 
 // minZoom: 1.5 maxZoom: 10
