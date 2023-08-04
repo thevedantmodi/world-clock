@@ -27,11 +27,15 @@ confirmButton.addEventListener("click", () => {
 
 
 function renderCity (name) {
+    // TODO: Add UTC/GMT to dataset!
     const port = airports.port(name)
     const tz = port.tz; const code = port.iata;
+    const lat = port.lat; const lon = port.lon;
 
     let div = document.createElement("div");
-    div.tz = tz
+    div.tz = tz;
+    div.lat = lat;
+    div.lon = lon;
 
     let h2 = document.createElement("h2");
     h2.id = "loc";

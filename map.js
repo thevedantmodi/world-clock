@@ -32,59 +32,29 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.p
 
 map.setView([27,0],0);
 
-let location_lat = new Map();
-let location_lon = new Map();
-let location_tz = new Map();
-
 let markers = []
 let tooltips = []
 
-makeMarkers()
-
 export function makeMarkers () {
-    findCityInfo()
     plotMarkers()
     plotTooltips()
+    console.log(`all done!`)
 }
 
 setInterval(function() {
     displayTimes()
 }, 1000)
 
-function findCityInfo () {
-    // console.log(location_names)
-    const time_blocks = document.querySelectorAll(".times div")
-    for (let i = 0; i < time_blocks.length; i++) {
-        const name = time_blocks[i].querySelector("h2").innerHTML
-        console.log(name)
-        let lat = 0; let lon = 0; let tz = "UTC";
-        if (name != "UTC" && name != "GMT") {
-            //If UTC, the default should do
-            const port = airports.port(name)
-            lat = port.lat; lon = port.lon; tz = port.tz;            
-        }
-        console.log(name, lat, lon, tz)
-        setInfo(name, lat, lon, tz)
-    }
-}
-
-function setInfo(name, lat, lon, tz) {
-    // TODO: Store this value in the HTML object, not in a JS DS!
-    location_lon.set(name, lat); 
-    location_lat.set(name, lon); 
-    location_tz.set(name, tz);
-}
-
 function plotMarkers () {
     const time_blocks = document.querySelectorAll(".times div")
     for (let i = 0; i < time_blocks.length; i++) {
-        const name = time_blocks[i].querySelector("h2").innerHTML
-        const lat = location_lat.get(name)
-        const lon = location_lon.get(name)
+        const lat = time_blocks[i].lat
+        const lon = time_blocks[i].lon
         const Icon = L.icon({
             iconUrl: 'img/black-dot.png',
             iconSize:     [7,7], // size of the icon
         });
+        
         const marker = L.marker([lon, lat], {icon: Icon});
 
         marker.addTo(map);
@@ -94,13 +64,13 @@ function plotMarkers () {
     }
 }
 
-export function plotTooltips () {
-    const times = document.querySelectorAll("output")
-    for (let i = 0; i < times.length; i++) {
-        const name = location_names[i]
-        const lat = location_lat.get(name)
-        const lon = location_lon.get(name)
-        const time_str = times[i].innerHTML
+function plotTooltips () {
+    const time_blocks = document.querySelectorAll(".times div")
+    for (let i = 0; i < time_blocks.length; i++) {
+        const name = time_blocks[i].querySelector("h2").innerHTML
+        const lat = time_blocks[i].lat
+        const lon = time_blocks[i].lon
+        const time_str = time_blocks[i].querySelector("output").innerHTML
         const time = time_str.substring(0, time_str.length - 3)
 
         const tooltip = L.tooltip({
@@ -110,16 +80,17 @@ export function plotTooltips () {
             .setContent(`${name}<br/>${time}`)
             .addTo(map);
 
+        console.log(`added ${name} to map`)
+
         tooltips.push(tooltip)
     }
 }
 
 function displayTimes() {
-    const times = document.querySelectorAll("output")
-    for (let i = 0; i < times.length; i++) {
-        const name = location_names[i]
-
-        const time_str = times[i].innerHTML
+    const time_blocks = document.querySelectorAll(".times div")
+    for (let i = 0; i < time_blocks.length; i++) {
+        const name = time_blocks[i].querySelector("h2").innerHTML
+        const time_str = time_blocks[i].querySelector("output").innerHTML
         const time = time_str.substring(0, time_str.length - 3)
 
         const tooltip = tooltips[i]
