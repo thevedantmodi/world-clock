@@ -50,12 +50,12 @@ function plotMarkers () {
     for (let i = 0; i < time_blocks.length; i++) {
         const lat = time_blocks[i].lat
         const lon = time_blocks[i].lon
-        const Icon = L.icon({
+        const Icon = new L.icon({
             iconUrl: 'img/black-dot.png',
             iconSize:     [7,7], // size of the icon
         });
         
-        const marker = L.marker([lon, lat], {icon: Icon});
+        const marker = new L.marker([lon, lat], {icon: Icon});
 
         marker.addTo(map);
         
@@ -73,7 +73,7 @@ function plotTooltips () {
         const time_str = time_blocks[i].querySelector("output").innerHTML
         const time = time_str.substring(0, time_str.length - 3)
 
-        const tooltip = L.tooltip({
+        const tooltip = new L.tooltip({
             permanent: true
         })
             .setLatLng([lon, lat])
