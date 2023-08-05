@@ -1,5 +1,6 @@
 import * as airports from "./airports.js";
 import * as maps from "./map.js"
+import updateTimes from "./times.js"
 
 let location_names = new Set()
 
@@ -50,6 +51,7 @@ function renderCity (name) {
     times.appendChild(div);
     console.log(div)
     maps.makeMarkers()
+    updateTimes()
 }
 
 

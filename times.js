@@ -1,6 +1,5 @@
-const locations = document.querySelectorAll("section.times div")
-
-const updateTimes = function () {
+export default function updateTimes() {
+    const locations = document.querySelectorAll("section.times div")
     locations.forEach(port => {
         const output = port.querySelector("output")
         const tz = port.getAttribute("tz")
@@ -15,8 +14,6 @@ const updateTimes = function () {
         output.innerHTML = now.toFormat("HH:mm:ss")
     })
 }
-
-updateTimes()
 
 setInterval(function () {
     updateTimes()
