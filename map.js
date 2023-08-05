@@ -52,7 +52,6 @@ let tooltips = []
 
 export function makeMarkers () {
     plotMarkers()
-    // plotTooltips()
     console.log(`all done!`)
 }
 
@@ -70,7 +69,7 @@ function plotMarkers () {
         const time = time_str.substring(0, time_str.length - 3)
 
         let icon = new maplibregl.Marker({
-            element: plotPoint(name, time_str),
+            element: plotPoint(name, time),
           }).setLngLat([lon, lat]) // Replace with the coordinates of the point you want to add
             .addTo(map);
           
@@ -96,22 +95,6 @@ function plotPoint(name, time_str) {
     return group;
   }
 
-// function plotTooltips () {
-//     const time_blocks = document.querySelectorAll(".times div")
-//     for (let i = 0; i < time_blocks.length; i++) {
-//         const name = time_blocks[i].querySelector("h2").innerHTML
-//         const lat = time_blocks[i].lat
-//         const lon = time_blocks[i].lon
-//         const time_str = time_blocks[i].querySelector("output").innerHTML
-//         const time = time_str.substring(0, time_str.length - 3)
-
-//         // tooltip at [lon, lat]
-//         // permanent tooltip
-//         // name \n time
-
-//         tooltips.push(tooltip)
-//     }
-// }
 
 function displayTimes() {
     const time_blocks = document.querySelectorAll(".times div")
@@ -120,9 +103,7 @@ function displayTimes() {
         const time_str = time_blocks[i].querySelector("output").innerHTML
         const time = time_str.substring(0, time_str.length - 3)
 
-        const tooltip = tooltips[i]
-
-        tooltip.setContent(`${name}<br/>${time}`)
+        plotPoint(name, time)
     }
 }
 
