@@ -72,7 +72,7 @@ function plotMarkers () {
           }).setLngLat([lon, lat]) // Replace with the coordinates of the point you want to add
             .addTo(map);
           
-          
+        markers.push(icon)
         // black dot 7px x 7px
         // at [lon, lat]
     }
@@ -91,8 +91,6 @@ function plotPoint(name, time_str) {
     .appendChild(element)
     .appendChild(text)
 
-    markers.push(group)
-
     return group;
 }
 
@@ -107,8 +105,12 @@ function displayTimes() {
     }
 }
 
-function updateTime(group, name, time) {
+function updateTime(marker, name, time) {
+    
+    marker.getElement().querySelector(".map-text").innerHTML = `<br/><b>${name} ${time}</b>`
+    
     // console.log(time)
-    let marker_text = group.getElementsByClassName("map-text");
-    marker_text.innerHTML = `<br/><b>${name} ${time}</b>`
+    // let marker_text = group.getElementsByClassName("map-text");
+    // console.log("marker_text", marker_text)
+    // marker_text.innerHTML = `<br/><b>${name} ${time}</b>`
 }
