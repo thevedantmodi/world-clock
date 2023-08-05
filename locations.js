@@ -34,7 +34,7 @@ function renderCity (name) {
     const lat = port.lat; const lon = port.lon;
 
     let div = document.createElement("div");
-    div.tz = tz;
+    div.setAttribute("tz", tz)
     div.lat = lat;
     div.lon = lon;
 

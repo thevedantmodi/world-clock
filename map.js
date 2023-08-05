@@ -48,16 +48,15 @@ map.addControl(
   );
 
 let markers = []
-let tooltips = []
 
 export function makeMarkers () {
     plotMarkers()
     console.log(`all done!`)
 }
 
-// setInterval(function() {
-//     displayTimes()
-// }, 1000)
+setInterval(function() {
+    displayTimes()
+}, 1000)
 
 function plotMarkers () {
     const time_blocks = document.querySelectorAll(".times div")
@@ -92,9 +91,10 @@ function plotPoint(name, time_str) {
     .appendChild(element)
     .appendChild(text)
 
-    return group;
-  }
+    markers.push(group)
 
+    return group;
+}
 
 function displayTimes() {
     const time_blocks = document.querySelectorAll(".times div")
@@ -103,7 +103,12 @@ function displayTimes() {
         const time_str = time_blocks[i].querySelector("output").innerHTML
         const time = time_str.substring(0, time_str.length - 3)
 
-        plotPoint(name, time)
+        updateTime(markers[i], name, time)
     }
 }
 
+function updateTime(group, name, time) {
+    // console.log(time)
+    let marker_text = group.getElementsByClassName("map-text");
+    marker_text.innerHTML = `<br/><b>${name} ${time}</b>`
+}
