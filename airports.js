@@ -11,7 +11,6 @@ fetch(URL)
         console.error('Error fetching JSON data:', error);
 });
 
-export function port(name) {
+export function port (name) {
     return JSON.parse(localStorage.getItem(name));
 }
-

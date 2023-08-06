@@ -1,18 +1,4 @@
 import { location_names } from "./locations.js";
-
-// let location_names = [
-//     "BOS",
-//     "UTC",
-//     "HOU",
-//     "KIN",
-//     "HYD",
-//     "BNE",
-//     "SFO",
-//     "PDL",
-//     "LON",
-//     "KSC",
-//     "FCO"
-// ]
 import * as airports from "./airports.js";
 
 // TODO: Change to non temp key
