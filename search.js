@@ -17,7 +17,7 @@ inputBox.onkeyup = function(){
     let input = inputBox.value;
     if (input.length){
         result = cities.filter((code)=>{
-            return code.toLowerCase().includes(input.toLowerCase())
+            return code.toLowerCase().startsWith(input.toLowerCase())
         });
         // console.log(result)
     }
