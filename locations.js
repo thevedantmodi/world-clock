@@ -7,28 +7,38 @@ let location_names = new Set()
 const inputBox = document.getElementById("input-box")
 const confirmButton = document.getElementById("add-button")
 const times = document.getElementById("time-box")
-
-/* Old method with preset of cities
-const section = document.querySelector('.times');
-const divs = section.querySelectorAll('div');
-
-for (const div of divs) {
-    const h2 = div.querySelector('h2');
-    location_names.push(h2.innerHTML);
-}
-*/
-// New method with custom cities added!
+const resultsBox = document.querySelector(".result-box")
+const alert = document.querySelector(".alert")
 
 confirmButton.addEventListener("click", () => {
     const name = inputBox.value
-    location_names.add(name)
-    console.log(location_names)
-    renderCity(name)
+    if (location_names.has(name)) {
+        alert.innerHTML = "Already added!"
+    } else {
+        alert.innerHTML = ""
+        inputBox.placeholder = "Add a city"
+        location_names.add(name)
+        console.log(location_names)
+        inputBox.value = resultsBox.innerHTML = ''
+        // TODO: Hide ul if empty
+        renderCity(name)
+    }
 })
 
+inputBox.addEventListener("keypress", () => {
+    if (event.code == "Enter") {
+        const search_results = document.querySelectorAll("li");
+        select(search_results[0]) //Gets the topmost result
+        confirmButton.click()
+    }
+})
+
+function select(list) {
+    inputBox.value = list.innerHTML
+    resultsBox.innerHTML = '';
+}
 
 function renderCity (name) {
-    // TODO: Add UTC/GMT to dataset!
     const port = airports.port(name)
     const tz = port.tz; const code = port.iata;
     const lat = port.lat; const lon = port.lon;

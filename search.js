@@ -3,14 +3,6 @@ const cities = ["UTC","ICY","HGZ","BYW","BDF","RFK","BCS","DUF","FOB","AFT","RNA
 const resultsBox = document.querySelector(".result-box")
 const inputBox = document.getElementById("input-box")
 
-// TODO: Update a new file with only IATA codes with the cities
-
-// function getCities() {
-//     let list = []
-//     for (let i = 0; i < sessionStorage.length; i++) {
-//         list.push(sessionStorage.key(i))
-//     }
-// }
 
 inputBox.onkeyup = function(){
     let result = []
@@ -19,7 +11,6 @@ inputBox.onkeyup = function(){
         result = cities.filter((code)=>{
             return code.toLowerCase().startsWith(input.toLowerCase())
         });
-        // console.log(result)
     }
     display(result);
 }
