@@ -35,8 +35,8 @@ map.addControl(
 
 let markers = []
 
-export function makeMarkers () {
-    plotMarkers()
+export function makeMarkers (name) {
+    plotMarkers(name)
     console.log(`all done!`)
 }
 
@@ -44,34 +44,38 @@ setInterval(function() {
     displayTimes()
 }, 1000)
 
-function plotMarkers () {
-    const time_blocks = document.querySelectorAll(".times div")
+function plotMarkers (port_name) {
+    const time_blocks = document.querySelectorAll(`.times div`)
+    console.log(`time blocks length is ${time_blocks.length}`)
     for (let i = 0; i < time_blocks.length; i++) {
         const name = time_blocks[i].querySelector("h2").innerHTML
-        const lon = time_blocks[i].lon
-        const lat = time_blocks[i].lat
-        const time_str = time_blocks[i].querySelector("output").innerHTML
-        const time = time_str.substring(0, time_str.length - 3)
+        if (name == port_name) { // Without this gate, all prev points would be updated on each new point added
+            const lon = time_blocks[i].lon
+            const lat = time_blocks[i].lat
+            const time_str = time_blocks[i].querySelector("output").innerHTML
+            const time = time_str.substring(0, time_str.length - 3)
 
-        let icon = new maplibregl.Marker({
-            element: plotPoint(name, time),
-          }).setLngLat([lon, lat]) // Replace with the coordinates of the point you want to add
-            .addTo(map);
-          
-        markers.push(icon)
-        // black dot 7px x 7px
-        // at [lon, lat]
+            console.log(`creating new icon for ${name}`)
+            const icon = new maplibregl.Marker({
+                element: plotPoint(name, time),
+            }).setLngLat([lon, lat]) // Replace with the coordinates of the point you want to add
+                .addTo(map);
+            
+            markers.push(icon)
+            // black dot 7px x 7px
+            // at [lon, lat]
+        }
     }
 }
 
-function plotPoint(name, time_str) {
+function plotPoint(name, time) {
     const group = document.createElement('div')
     group.className = 'map-group'
     const element = document.createElement('div');
     element.className = 'map-point';
     const text = document.createElement('div');
     text.className = 'map-text'
-    text.innerHTML = `<br/><b>${name} ${time_str}</b>`
+    text.innerHTML = `<br/><b>${name} ${time}</b>`
     
     group
     .appendChild(element)

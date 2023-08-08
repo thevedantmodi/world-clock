@@ -60,7 +60,7 @@ function renderCity (name) {
 
     times.appendChild(div);
     console.log(div)
-    maps.makeMarkers()
+    maps.makeMarkers(name)
     updateTimes()
 }
 
