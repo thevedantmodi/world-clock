@@ -17,9 +17,12 @@ const map = new maplibregl.Map({
     container: "map", // the id of the div element
     style: `https://basemaps-api.arcgis.com/arcgis/rest/services/styles/${basemapEnum}?type=style&token=${apiKey}`,
     zoom: 1.2,
+    maxZoom: 1.2,
+    minZoom: 1.2,
     center: [0, 20], // starting location [longitude, latitude]
     attributionControl: false,
-    noWrap: false
+    noWrap: false,
+    dragPan: false,
     // TODO: nowrap
   })
 

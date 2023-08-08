@@ -9,85 +9,26 @@
 
     <h1 id="title">World Clock!!!</h1>
 
-    <section class="search">
-
-        <div class="search-box">
-            <p id="already" class="alert"></p>
-            <div class="row">
-                <input type="text" id="input-box" placeholder="Add a city"
-                autocomplete="off">
-                <button id="add-button">+</button>
-            </div>
-            <div class="result-box">
-                <!-- Autocomplete results -->
-            </div>
+<section class="search">
+    <div class="search-box">
+        <p id="already" class="alert"></p>
+        <div class="row">
+            <input type="text" id="input-box" placeholder="Add a city"
+            autocomplete="off">
+            <button id="add-button">+</button>
         </div>
-        
-        </section>
-
-
-
-<section class="times" id="time-box">
-<!--
-    <div tz="America/New_York">
-        <h2 id="loc">BOS</h2>
-        <output>00:00:00</output> 
+        <div class="result-box">
+            <!-- Autocomplete results -->
+        </div>
     </div>
-    <div tz="UTC">
-        <h2 id="loc">UTC</h2>
-        <output>00:00:00</output>
-    </div>
-
-    <div tz="America/Chicago">
-        <h2 id="loc">HOU</h2>
-        <output>00:00:00</output>
-    </div>
-
-    <div tz="America/Jamaica">
-        <h2 id="loc">KIN</h2>
-        <output>00:00:00</output>
-    </div>
-
-    <div tz="Asia/Kolkata">
-        <h2 id="loc">HYD</h2>
-        <output>00:00:00</output>
-    </div>
-
-    <div tz="Australia/Brisbane">
-        <h2 id="loc">BNE</h2>
-        <output>00:00:00</output>
-    </div>
-
-    <div tz="America/Los_Angeles">
-        <h2 id="loc">SFO</h2>
-        <output>00:00:00</output>
-    </div>
-
-    <div tz="Atlantic/Azores">
-        <h2 id="loc">PDL</h2>
-        <output>00:00:00</output> 
-    </div>
-
-    <div tz="Europe/London">
-        <h2 id="loc">LON</h2>
-        <output>00:00:00</output>
-    </div>
-
-    <div tz="Europe/Bratislava">
-        <h2 id="loc">KSC</h2>
-        <output>00:00:00</output>
-    </div>
-
-    <div tz="Europe/Rome">
-        <h2 id="loc">FCO</h2>
-        <output>00:00:00</output>
-    </div>
-     -->
 </section>
 
 <section class="map">
     <!-- MapLibre GL JS MAP GOES HERE -->
     <div id="map"></div>
+</section>
+
+<section class="times" id="time-box">
 </section>
 
 <script src="https://moment.github.io/luxon/global/luxon.min.js"></script>
