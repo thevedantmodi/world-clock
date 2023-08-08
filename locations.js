@@ -10,6 +10,8 @@ const times = document.getElementById("time-box")
 const resultsBox = document.querySelector(".result-box")
 const alert = document.querySelector(".alert")
 
+initLocations()
+
 confirmButton.addEventListener("click", () => {
     const name = inputBox.value
     if (location_names.has(name)) {
@@ -17,8 +19,7 @@ confirmButton.addEventListener("click", () => {
     } else {
         alert.innerHTML = ""
         inputBox.placeholder = "Add a city"
-        location_names.add(name)
-        console.log(location_names)
+        updateLocations(name)        
         inputBox.value = resultsBox.innerHTML = ''
         // TODO: Hide ul if empty
         renderCity(name)
@@ -32,6 +33,22 @@ inputBox.addEventListener("keypress", () => {
         confirmButton.click()
     }
 })
+
+function initLocations() {
+    if (localStorage.getItem("location_names") != null) {
+        const arr = JSON.parse(localStorage.getItem("location_names"))
+        arr.forEach(element => {
+            renderCity(element)
+        });
+    }
+}
+
+function updateLocations(name) {
+    location_names.add(name)
+    const arr = JSON.stringify(Array.from(location_names));
+    console.log(`storing ${arr}`)
+    localStorage.setItem("location_names", arr)
+}
 
 function select(list) {
     inputBox.value = list.innerHTML
@@ -59,7 +76,7 @@ function renderCity (name) {
     div.appendChild(output);
 
     times.appendChild(div);
-    console.log(div)
+
     maps.makeMarkers(name)
     updateTimes()
 }

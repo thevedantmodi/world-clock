@@ -40,7 +40,6 @@ let markers = []
 
 export function makeMarkers (name) {
     plotMarkers(name)
-    console.log(`all done!`)
 }
 
 setInterval(function() {
@@ -49,7 +48,7 @@ setInterval(function() {
 
 function plotMarkers (port_name) {
     const time_blocks = document.querySelectorAll(`.times div`)
-    console.log(`time blocks length is ${time_blocks.length}`)
+    
     for (let i = 0; i < time_blocks.length; i++) {
         const name = time_blocks[i].querySelector("h2").innerHTML
         if (name == port_name) { // Without this gate, all prev points would be updated on each new point added
@@ -58,7 +57,7 @@ function plotMarkers (port_name) {
             const time_str = time_blocks[i].querySelector("output").innerHTML
             const time = time_str.substring(0, time_str.length - 3)
 
-            console.log(`creating new icon for ${name}`)
+            
             const icon = new maplibregl.Marker({
                 element: plotPoint(name, time),
             }).setLngLat([lon, lat]) // Replace with the coordinates of the point you want to add
@@ -99,11 +98,5 @@ function displayTimes() {
 }
 
 function updateTime(marker, name, time) {
-    
     marker.getElement().querySelector(".map-text").innerHTML = `<br/><b>${name} ${time}</b>`
-    
-    // console.log(time)
-    // let marker_text = group.getElementsByClassName("map-text");
-    // console.log("marker_text", marker_text)
-    // marker_text.innerHTML = `<br/><b>${name} ${time}</b>`
 }
