@@ -6,21 +6,13 @@
         <link href=https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css rel="stylesheet" />
         <link href="style.css" rel="stylesheet"/>
         <link href="toggle.css" rel="stylesheet"/>
+        <title>World Clock</title>
         
 </head>
 <body>
 
     <!-- <h1 id="title">World Clock!!!</h1> -->
 
-    
-
-    <!-- <div class="btn-container">
-			<label class="switch btn-color-mode-switch">
-		        <input type="checkbox" name="color_mode" id="color_mode" value="1">
-		        <label for="color_mode" data-on="Code" data-off="City" class="btn-color-mode-switch-inner"></label>
-		    </label>
-	</div> -->
-    
     <section class="search">
         <div class="search-box">
             <p id="already" class="alert"></p>
@@ -28,6 +20,7 @@
                 <input type="text" id="input-box" placeholder="Add a city"
                 autocomplete="off">
                 <button id="add-button">+</button>
+                <button id="clear-button">x</button>
             </div>
             <div class="result-box">
                 <!-- Autocomplete results -->

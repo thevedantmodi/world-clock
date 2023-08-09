@@ -22,8 +22,7 @@ const map = new maplibregl.Map({
     center: [0, 20], // starting location [longitude, latitude]
     attributionControl: false,
     noWrap: false,
-    dragPan: false,
-    // TODO: nowrap
+    dragPan: false
   })
 
 const OSM_attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'

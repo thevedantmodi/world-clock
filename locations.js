@@ -11,7 +11,14 @@ const resultsBox = document.querySelector(".result-box")
 const alert = document.querySelector(".alert")
 // const city_toggle = document.querySelector(".btn-container input").checked
 
-// initLocations()
+const clearButton = document.querySelector("#clear-button")
+
+clearButton.addEventListener("click", () => {
+    localStorage.clear()
+    location.reload()
+})
+
+initLocations()
 
 confirmButton.addEventListener("click", () => {
     const name = inputBox.value
@@ -37,15 +44,31 @@ inputBox.addEventListener("keypress", () => {
 
 function initLocations() {
     const arr = JSON.parse(localStorage.getItem("location_names"))
+    if (arr != null) {
         arr.forEach(element => {
             renderCity(element)
         });
+    }
+    
 }
 
 function updateLocations(name) {
     location_names.add(name)
-    const arr = JSON.stringify(Array.from(location_names));
-    localStorage.setItem("location_names", arr)
+    const data = JSON.stringify(Array.from(location_names));
+    let prev = localStorage.getItem("location_names")
+    let arr = ""
+
+    if (prev != null) {
+        arr = JSON.parse(prev)
+        arr.forEach(element => {
+            location_names.add(element)
+        })
+    }
+
+    localStorage.setItem("location_names", JSON.stringify(Array.from(location_names)))
+
+
+    // localStorage.setItem("location_names", JSON.stringify(prev.concat(data)))
 }
 
 function select(list) {
