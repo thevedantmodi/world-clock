@@ -72,6 +72,10 @@ function renderCity (name) {
     button.setAttribute("id", "delete-button");
     button.innerHTML = "-";
 
+    button.addEventListener("click", () => {
+        deleteCity(name)
+    })
+
     let output = document.createElement("output");
     output.innerText = "00:00:00";
     
@@ -85,8 +89,17 @@ function renderCity (name) {
     updateTimes()
 }
 
+
 function deleteCity(name) {
-    
+    location_names.delete(name)
+    const cities_list = times.querySelectorAll("div")
+    for (let i = 0; i < cities_list.length; i++) {
+        const name_element = cities_list[i].querySelector("h2").innerHTML
+        if (name_element == name) {
+            cities_list[i].remove()
+        }
+    }
+    maps.deleteMarker(name);
 }
 
 export { location_names }

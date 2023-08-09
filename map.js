@@ -99,3 +99,15 @@ function displayTimes() {
 function updateTime(marker, name, time) {
     marker.getElement().querySelector(".map-text").innerHTML = `<br/><b>${name} ${time}</b>`
 }
+
+
+export function deleteMarker(name) {
+    for (let i = 0; i < markers.length; i++) {
+        if (markers[i]
+            .getElement()
+            .querySelector(".map-text")
+            .innerHTML.includes(name)) {
+                markers[i].remove()
+        }
+    }
+}
