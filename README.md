@@ -1,5 +1,11 @@
 # world-clock
 
+TODO:
+Grid for cities
+code/city switcher
+dark/light switcher
+Fix empty search bar ugly
+
 ## Sources
 https://dev.to/deepakdevanand/leaflet-map-dark-theme-5ej0
 

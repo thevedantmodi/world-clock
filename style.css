@@ -2,7 +2,7 @@
 
 body {
     font-family: IBM Plex Mono, monospace;
-    font-size: 64px;
+    font-size: 20px;
     font-weight: 500;
     line-height: 1.5;
 
@@ -25,12 +25,13 @@ h1 { font-size: 12px; }
     border-radius: 5px;
 }
 
+
+
 .row{
     display: flex;
     align-items: center;
     padding: 10px 20px;
     height: 100px;
-    padding-bottom: 0px;
 }
 
 input {
@@ -62,6 +63,7 @@ input {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+
 .result-box {
     padding: 0px 20px;
 }
@@ -84,11 +86,31 @@ input {
     background-color: #8a8aa26a;
 }
 
+.times {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10vw;
+    padding: 2vw;
+}
+
 section.times div {
     padding: 24px 36px 24px 36px;
-    display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 20vw;
+    height: 20vh;
+    background-color: #323236;
+    /* border: 1px solid blue; */
+    border-radius: 22px;    
+}
+
+@media (max-width: 600px) {
+    .times {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    section.times div {
+        width: 70vw;
+    }
 }
 
 section.times h2:before {
@@ -96,7 +118,7 @@ section.times h2:before {
     display: inline-block;
     width: 0.8em;
     height: 0.8em;
-    background-color: #33333a;
+    background-color: #373771;
     border-radius: 50%;
     margin: 0 0.5em 0 0;
     vertical-align: -0.05em;
@@ -108,13 +130,6 @@ section.times div.awake h2:before{
 
 }
 
-/* .leaflet-layer,
-.leaflet-control-zoom-in,
-.leaflet-control-zoom-out,
-.leaflet-control-attribution {
-    filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
-} */
-
 .map-point {
     width: 10px;
     height: 10px;
@@ -124,4 +139,8 @@ section.times div.awake h2:before{
 
 .map-group {
     line-height: 100%;
+}
+
+.maplibregl-ctrl-attrib-inner mapboxgl-ctrl-attrib-inner {
+    color: black;
 }

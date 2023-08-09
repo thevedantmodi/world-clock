@@ -10,7 +10,7 @@ const times = document.getElementById("time-box")
 const resultsBox = document.querySelector(".result-box")
 const alert = document.querySelector(".alert")
 
-initLocations()
+// initLocations()
 
 confirmButton.addEventListener("click", () => {
     const name = inputBox.value
@@ -35,12 +35,10 @@ inputBox.addEventListener("keypress", () => {
 })
 
 function initLocations() {
-    if (localStorage.getItem("location_names") != null) {
-        const arr = JSON.parse(localStorage.getItem("location_names"))
+    const arr = JSON.parse(localStorage.getItem("location_names"))
         arr.forEach(element => {
             renderCity(element)
         });
-    }
 }
 
 function updateLocations(name) {
@@ -61,6 +59,7 @@ function renderCity (name) {
     const lat = port.lat; const lon = port.lon;
 
     let div = document.createElement("div");
+    div.className = "grid-element"
     div.setAttribute("tz", tz)
     div.lat = lat;
     div.lon = lon;
@@ -69,10 +68,15 @@ function renderCity (name) {
     h2.id = "loc";
     h2.innerHTML = code;
 
+    let button = document.createElement("button");
+    button.setAttribute("id", "delete-button");
+    button.innerHTML = "-";
+
     let output = document.createElement("output");
     output.innerText = "00:00:00";
     
     div.appendChild(h2);
+    div.appendChild(button)
     div.appendChild(output);
 
     times.appendChild(div);

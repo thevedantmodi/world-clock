@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link href="style.css" rel="stylesheet"/>
-    <script src=https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js></script>
-    <link href=https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css rel="stylesheet" />
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src=https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js></script>
+        <link href=https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css rel="stylesheet" />
+        <link href="style.css" rel="stylesheet"/>
 </head>
 <body>
 
     <!-- <h1 id="title">World Clock!!!</h1> -->
 
-<section class="search">
-    <div class="search-box">
-        <p id="already" class="alert"></p>
-        <div class="row">
-            <input type="text" id="input-box" placeholder="Add a city"
-            autocomplete="off">
-            <button id="add-button">+</button>
+    
+    <section class="search">
+        <div class="search-box">
+            <p id="already" class="alert"></p>
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add a city"
+                autocomplete="off">
+                <button id="add-button">+</button>
+            </div>
+            <div class="result-box">
+                <!-- Autocomplete results -->
+            </div>
         </div>
-        <div class="result-box">
-            <!-- Autocomplete results -->
-        </div>
-    </div>
-</section>
+    </section>
+    
+    <section class="times" id="time-box"></section>
+    
+    <section class="map" hidden>
+        <div id="map"></div>
+    </section>
 
-
-<section class="map">
-    <!-- MapLibre GL JS MAP GOES HERE -->
-    <div id="map"></div>
-</section>
-
-<section class="times" id="time-box">
-</section>
-
-<script src="https://moment.github.io/luxon/global/luxon.min.js"></script>
-<!-- Luxon is a time zone handler -->
-<script src="search.js"></script>
-<script type="module" src="times.js"></script>
-<script type="module" src="locations.js"></script>
-<script type="module" src="map.js"></script>
-<script type="module" src="airports.js"></script>
-<!-- <script type="module" src="markers.js"></script> -->
+    <script src="https://moment.github.io/luxon/global/luxon.min.js"></script>
+    <!-- Luxon is a time zone handler -->
+    <script src="search.js"></script>
+    <script type="module" src="times.js"></script>
+    <script type="module" src="locations.js"></script>
+    <script type="module" src="map.js"></script>
+    <script type="module" src="airports.js"></script>
+    <!-- <script type="module" src="markers.js"></script> -->
 
 </body>
 </html>

@@ -31,20 +31,19 @@ const Vedant_attribution = '&copy; <a href="http://www.vedantmodi.com">Vedant Mo
 
 map.addControl(
     new maplibregl.AttributionControl({
+        
       compact: true,// reduces the copyright attributions view
       customAttribution: Vedant_attribution + OSM_attribution
     })
   );
 
+  map.scrollZoom.disable();
+
 let markers = []
 
-export function makeMarkers (name) {
-    plotMarkers(name)
-}
+export function makeMarkers (name) {plotMarkers(name)}
 
-setInterval(function() {
-    displayTimes()
-}, 1000)
+setInterval(function() {displayTimes()}, 1000)
 
 function plotMarkers (port_name) {
     const time_blocks = document.querySelectorAll(`.times div`)
