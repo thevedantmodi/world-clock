@@ -54,7 +54,7 @@ function plotMarkers (port_name) {
             const lon = time_blocks[i].lon
             const lat = time_blocks[i].lat
             const time_str = time_blocks[i].querySelector("output").innerHTML
-            const time = time_str.substring(0, time_str.length - 3)
+            const time = time_str.substring(0, time_str.length - 9)
 
             
             const icon = new maplibregl.Marker({
@@ -90,7 +90,7 @@ function displayTimes() {
     for (let i = 0; i < time_blocks.length; i++) {
         const name = time_blocks[i].querySelector("h2").innerHTML
         const time_str = time_blocks[i].querySelector("output").innerHTML
-        const time = time_str.substring(10, time_str.length - 3)
+        const time = time_str.substring(10, time_str.length - 9)
 
         updateTime(markers[i], name, time)
     }
