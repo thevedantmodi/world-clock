@@ -75,8 +75,8 @@ function renderCity (name) {
     let output = document.createElement("output");
     output.innerText = "00:00:00";
     
+    div.appendChild(button);
     div.appendChild(h2);
-    div.appendChild(button)
     div.appendChild(output);
 
     times.appendChild(div);

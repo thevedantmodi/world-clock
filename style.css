@@ -93,7 +93,7 @@ input {
     padding: 2vw;
 }
 
-section.times div {
+section.times .grid-element {
     padding: 24px 36px 24px 36px;
     justify-content: space-around;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -104,18 +104,35 @@ section.times div {
     border-radius: 22px;    
 }
 
+section.times .grid-element button {
+    position: relative;
+    color: white;
+    left: 18vw;
+    background-color: #323236;
+    border: none;
+    font-weight: 900;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    transition: background-color 0.3s ease;
+}
+
+section.times .grid-element button:hover {
+    background-color: rgb(179, 50, 50);
+}
+
 @media (max-width: 600px) {
     .times {
         grid-template-columns: repeat(1, 1fr);
     }
-    section.times div {
+    section.times .grid-element {
         width: 70vw;
     }
 }
 
 section.times h2:before {
     content: "";
-    display: inline-block;
+    display: flex;
     width: 0.8em;
     height: 0.8em;
     background-color: #373771;
@@ -127,8 +144,8 @@ section.times h2:before {
 
 section.times div.awake h2:before{
     background-color: #fff182;
-
 }
+
 
 .map-point {
     width: 10px;

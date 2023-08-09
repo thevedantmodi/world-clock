@@ -11,7 +11,7 @@ export default function updateTimes() {
         if (hour >= 8 && hour < 23) {
             port.classList.add("awake")
         }
-        output.innerHTML = now.toFormat("HH:mm:ss")
+        output.innerHTML = now.toFormat("ccc dd LLL HH:mm:ss")
     })
 }
 
