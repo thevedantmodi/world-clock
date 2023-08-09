@@ -9,7 +9,7 @@ const confirmButton = document.getElementById("add-button")
 const times = document.getElementById("time-box")
 const resultsBox = document.querySelector(".result-box")
 const alert = document.querySelector(".alert")
-const city_toggle = document.querySelector(".btn-container input").checked
+// const city_toggle = document.querySelector(".btn-container input").checked
 
 // initLocations()
 
