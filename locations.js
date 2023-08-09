@@ -85,7 +85,8 @@ function renderCity (name) {
     updateTimes()
 }
 
-
-
+function deleteCity(name) {
+    
+}
 
 export { location_names }
