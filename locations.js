@@ -45,7 +45,6 @@ function initLocations() {
 function updateLocations(name) {
     location_names.add(name)
     const arr = JSON.stringify(Array.from(location_names));
-    console.log(`storing ${arr}`)
     localStorage.setItem("location_names", arr)
 }
 

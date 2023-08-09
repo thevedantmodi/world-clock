@@ -3,7 +3,6 @@ const URL = 'IATAairports.json';
 fetch(URL)
     .then(response => response.json())
     .then(data => {
-        console.log("storing database!")
         data.forEach(item => {        
                 
             localStorage.setItem(item.iata, JSON.stringify(item))

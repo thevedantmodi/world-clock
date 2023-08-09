@@ -3,8 +3,9 @@
 TODO:
 - ~Grid for cities~
 - code/city switcher
-- dark/light switcher
+- ~dark/light switcher~
 - Fix empty search bar ugly
+- Remember cities added (cookies)
 
 ## Sources
 https://dev.to/deepakdevanand/leaflet-map-dark-theme-5ej0
