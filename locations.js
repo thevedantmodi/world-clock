@@ -9,6 +9,7 @@ const confirmButton = document.getElementById("add-button")
 const times = document.getElementById("time-box")
 const resultsBox = document.querySelector(".result-box")
 const alert = document.querySelector(".alert")
+const city_toggle = document.querySelector(".btn-container input").checked
 
 // initLocations()
 
@@ -57,12 +58,16 @@ function renderCity (name) {
     const port = airports.port(name)
     const tz = port.tz; const code = port.iata;
     const lat = port.lat; const lon = port.lon;
+    const city_name = port.city;
 
     let div = document.createElement("div");
     div.className = "grid-element"
     div.setAttribute("tz", tz)
+    div.setAttribute("code_name", name)
+    div.setAttribute("city_name", city_name)
     div.lat = lat;
     div.lon = lon;
+
 
     let h2 = document.createElement("h2");
     h2.id = "loc";
