@@ -66,9 +66,6 @@ function updateLocations(name) {
     }
 
     localStorage.setItem("location_names", JSON.stringify(Array.from(location_names)))
-
-
-    // localStorage.setItem("location_names", JSON.stringify(prev.concat(data)))
 }
 
 function select(list) {
@@ -119,6 +116,7 @@ function renderCity (name) {
 
 function deleteCity(name) {
     location_names.delete(name)
+    localStorage.setItem("location_names", JSON.stringify(Array.from(location_names))) //refresh locations in local storage
     const cities_list = times.querySelectorAll("div")
     for (let i = 0; i < cities_list.length; i++) {
         const name_element = cities_list[i].querySelector("h2").innerHTML
