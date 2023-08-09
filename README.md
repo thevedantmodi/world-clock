@@ -1,7 +1,7 @@
 # world-clock
 
 TODO:
-Grid for cities
+~Grid for cities~
 code/city switcher
 dark/light switcher
 Fix empty search bar ugly
