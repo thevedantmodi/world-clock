@@ -18,6 +18,17 @@ body {
 
 h1 { font-size: 12px; }  
   
+.back {
+    background-color:#4a4a54;
+    border: none;
+    color: white;
+    padding: 4px 32px;
+    text-align: center;
+    font-weight: 900;
+    display: inline-block;
+    font-family: IBM Plex Mono, monospace;
+    font-size: 12px;
+}
 
 .search-box{
     width: 600px;
