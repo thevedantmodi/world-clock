@@ -15,8 +15,8 @@ const basemapEnum = "ArcGIS:DarkGray";
 
 const map = new maplibregl.Map({
     container: "map", // the id of the div element
-    // style: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
-    style: `https://basemaps-api.arcgis.com/arcgis/rest/services/styles/${basemapEnum}?type=style&token=${apiKey}`,
+    style: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+    // style: `https://basemaps-api.arcgis.com/arcgis/rest/services/styles/${basemapEnum}?type=style&token=${apiKey}`,
     zoom: 1.2,
     maxZoom: 1.2,
     minZoom: 1.2,
